@@ -7,19 +7,14 @@ const Footer = () => {
         <div className="container mx-auto">
           <p className="text-sm">
             &copy; 2022{" "}
-            <a href="" className="text-gold">
+            <a href="https://fischerjordan.com/" className="text-gold">
               FischerJordan
             </a>
             . All rights reserved.
           </p>
           <p className="text-sm">
-            <a href="" className="text-gold">
-              Privacy Policy
-            </a>{" "}
-            |{" "}
-            <a href="" className="text-gold">
-              Terms of Service
-            </a>
+            <div className="text-gold text-sm">Privacy Policy |</div>
+            <div className="text-sm text-gold"> Terms of Service</div>
           </p>
         </div>
       </footer>
