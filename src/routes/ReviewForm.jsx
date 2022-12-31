@@ -17,7 +17,7 @@ const ReviewForm = () => {
     async function getReviewFields() {
       setLoadingFields(true);
       const response = await fetch(
-        `http://localhost:8000/needed_reviews/fields/${reviewId}/`,
+        `http://3.16.48.61/needed_reviews/fields/${reviewId}/`,
         {
           method: "GET",
           headers: {
@@ -39,7 +39,7 @@ const ReviewForm = () => {
     async function getNeededForm() {
       setLoadingReview(true);
       const response = await fetch(
-        `http://localhost:8000/needed_reviews/review/${reviewId}/`,
+        `http://3.16.48.61/needed_reviews/review/${reviewId}/`,
         {
           method: "GET",
           headers: {
@@ -97,7 +97,7 @@ const ReviewForm = () => {
     const json = JSON.stringify(review);
 
     console.log(json);
-    const response = await fetch(`http://localhost:8000/reviews/`, {
+    const response = await fetch(`http://3.16.48.61/reviews/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
