@@ -24,7 +24,6 @@ const ReviewForm = () => {
             "Content-Type": "application/json",
           },
           accept: "application/json",
-          referrerPolicy: "unsafe_url",
         }
       );
       const data = await response.json();
@@ -46,7 +45,6 @@ const ReviewForm = () => {
           headers: {
             "Content-Type": "application/json",
           },
-          referrerPolicy: "unsafe_url",
         }
       );
       const data = await response.json();
@@ -105,7 +103,6 @@ const ReviewForm = () => {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
       },
-      referrerPolicy: "unsafe_url",
       body: json,
     });
     const responseData = await response.json();

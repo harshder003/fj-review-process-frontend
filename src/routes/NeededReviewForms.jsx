@@ -21,7 +21,6 @@ function NeededReviewForms() {
           headers: {
             "Content-Type": "application/json",
           },
-          referrerPolicy: "unsafe_url",
         }
       );
       const data = await response.json();
