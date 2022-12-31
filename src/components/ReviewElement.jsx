@@ -35,6 +35,7 @@ const ReviewElement = (props) => {
           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline resize-y border-gold bg-navy"
           placeholder="Enter your answer here"
           rows="2"
+          required
         />
       </div>
     );
@@ -60,7 +61,7 @@ const ReviewElement = (props) => {
             name={HMLName}
             value="H"
             className="form-radio text-gold focus:border-gold focus:outline-none focus:shadow-outline border-gold bg-navy"
-            // required
+            required
           />
           <label className=" ml-2 mr-4" for="">
             High
@@ -71,7 +72,7 @@ const ReviewElement = (props) => {
             name={HMLName}
             value="M"
             className="form-radio text-gold focus:border-gold focus:outline-none focus:shadow-outline border-gold bg-navy"
-            // required
+            required
           />
           <label className=" ml-2 mr-4" for="">
             Medium
@@ -82,7 +83,7 @@ const ReviewElement = (props) => {
             name={HMLName}
             value="L"
             className="form-radio text-gold focus:border-gold focus:outline-none focus:shadow-outline border-gold bg-navy"
-            // required
+            required
           />
           <label className="ml-2 mr-4" for="">
             Low
