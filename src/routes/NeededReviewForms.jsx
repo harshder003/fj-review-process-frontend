@@ -15,7 +15,7 @@ function NeededReviewForms() {
     async function getNeededForms() {
       setIsLoading(true);
       const response = await fetch(
-        `https://3.16.48.61/needed_reviews/${userId}/`,
+        `https://fjreview.work/needed_reviews/${userId}/`,
         {
           method: "GET",
           headers: {

@@ -17,7 +17,7 @@ const ReviewForm = () => {
     async function getReviewFields() {
       setLoadingFields(true);
       const response = await fetch(
-        `https://3.16.48.61/needed_reviews/fields/${reviewId}/`,
+        `https://fjreview.work/needed_reviews/fields/${reviewId}/`,
         {
           method: "GET",
           headers: {
@@ -39,7 +39,7 @@ const ReviewForm = () => {
     async function getNeededForm() {
       setLoadingReview(true);
       const response = await fetch(
-        `https://3.16.48.61/needed_reviews/review/${reviewId}/`,
+        `https://fjreview.work/needed_reviews/review/${reviewId}/`,
         {
           method: "GET",
           headers: {
@@ -97,7 +97,7 @@ const ReviewForm = () => {
     const json = JSON.stringify(review);
 
     console.log(json);
-    const response = await fetch(`https://3.16.48.61/reviews/`, {
+    const response = await fetch(`https://fjreview.work/reviews/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
