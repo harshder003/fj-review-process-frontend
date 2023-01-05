@@ -17,7 +17,7 @@ const ReviewForm = () => {
     async function getReviewFields() {
       setLoadingFields(true);
       const response = await fetch(
-        `https://fjreview.work/needed_reviews/fields/${reviewId}/`,
+        `http://localhost:8000/needed_reviews/fields/${reviewId}/`,
         {
           method: "GET",
           headers: {
@@ -39,7 +39,7 @@ const ReviewForm = () => {
     async function getNeededForm() {
       setLoadingReview(true);
       const response = await fetch(
-        `https://fjreview.work/needed_reviews/review/${reviewId}/`,
+        `http://localhost:8000/needed_reviews/review/${reviewId}/`,
         {
           method: "GET",
           headers: {
@@ -62,7 +62,11 @@ const ReviewForm = () => {
 
   const formFields = reviewFields.map((field, index) => (
     <li key={index}>
-      <ReviewElement type={field.Type} text={field.Text} />
+      <ReviewElement
+        type={field.Type}
+        text={field.Text}
+        mandatory={field.Mandatory === 1}
+      />
     </li>
   ));
 
@@ -97,7 +101,7 @@ const ReviewForm = () => {
     const json = JSON.stringify(review);
 
     console.log(json);
-    const response = await fetch(`https://fjreview.work/reviews/`, {
+    const response = await fetch(`http://localhost:8000/reviews/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -132,9 +136,9 @@ const ReviewForm = () => {
     if (neededReview["type"] === "staff") {
       return (
         <h2 className="text-xl text-center text-white">
-          Please complete the following review of {neededReview.employee_name}'s
-          performance on the {neededReview.project_name} project over the past 6
-          months.
+          Please complete the following review of {neededReview.employee_name}
+          's performance on the {neededReview.project_name} project over the
+          past 6 months.
         </h2>
       );
     }
@@ -175,6 +179,18 @@ const ReviewForm = () => {
     }
   }
 
+  const getPartnerAnonymousMessage = (
+    <h3 className="text-sm text-center text-white">
+      Please note that partner reviews are anonymous.
+    </h3>
+  );
+
+  function returnToDashboard() {
+    // reset the history so that the back button doesn't take you back to the already submitted form
+    window.history.replaceState(null, "", dashboardLink);
+    window.location.href = dashboardLink;
+  }
+
   if (isSubmitted) {
     window.scrollTo(0, 0);
     return (
@@ -182,14 +198,13 @@ const ReviewForm = () => {
         <h1 className="text-xl text-center text-gold font-bold w-72 mb-7">
           Thank you for completing the review!
         </h1>
-        <Link to={dashboardLink}>
-          <button
-            className="bg-gold hover:bg-gold-dark text-white font-bold py-2 px-4 rounded hover:shadow-lg hover:-translate-y-1 duration-300 ease-in-out"
-            type="submit"
-          >
-            Back to Dashboard
-          </button>
-        </Link>
+        <button
+          className="bg-gold hover:bg-gold-light text-white font-bold py-2 px-4 rounded hover:shadow-lg hover:-translate-y-1 duration-300 ease-in-out"
+          type="button"
+          onClick={returnToDashboard}
+        >
+          Back to Dashboard
+        </button>
       </div>
     );
   }
@@ -205,7 +220,7 @@ const ReviewForm = () => {
       return (
         <div className="flex justify-center my-7">
           <button
-            className="bg-gold hover:bg-gold-dark text-white font-bold py-2 px-4 rounded hover:shadow-lg hover:-translate-y-1 duration-300 ease-in-out"
+            className="bg-gold hover:bg-gold-light text-white font-bold py-2 px-4 rounded hover:shadow-lg hover:-translate-y-1 duration-300 ease-in-out"
             type="submit"
           >
             Submit
@@ -233,11 +248,11 @@ const ReviewForm = () => {
   }
 
   return (
-    <div className=" bg-navy min-h-screen">
+    <div className="bg-navy min-h-screen">
       <div className="flex justify-between mx-4 mt-4">
         <Link to={dashboardLink}>
           <button
-            className="bg-gold hover:bg-gold-dark text-white font-bold py-2 px-4 rounded hover:shadow-lg hover:-translate-y-1 duration-300 ease-in-out"
+            className="bg-gold hover:bg-gold-light text-white font-bold py-2 px-4 rounded hover:shadow-lg hover:-translate-y-1 duration-300 ease-in-out"
             type="submit"
           >
             Back to Dashboard
@@ -247,11 +262,19 @@ const ReviewForm = () => {
           {neededReview.reviewer_name}
         </button>
       </div>
+
       <div className="mx-5 md:mx-40 lg:mx-60">
-        <h1 className="text-3xl font-bold text-center mt-12 text-gold">
-          {neededReview.title}
+        <h1 className="text-3xl font-bold text-center mt-12 mb-2 text-gold">
+          {neededReview.title} - {neededReview.employee_name}
+          {neededReview.project_name ? (
+            <span> - {neededReview.project_name}</span>
+          ) : null}
         </h1>
+        {neededReview["type"] === "partner" ? getPartnerAnonymousMessage : null}
         {getReviewTitle()}
+        <p className="text-center text-red-500 font-bold text-sm mt-2">
+          * represents a required field
+        </p>
         <form className="mt-7" onSubmit={handleSubmit}>
           <ul className="flex flex-col items-stretch justify-center mt-7">
             {formFields}
