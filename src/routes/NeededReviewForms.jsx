@@ -15,7 +15,7 @@ function NeededReviewForms() {
     async function getNeededForms() {
       setIsLoading(true);
       const response = await fetch(
-        `http://localhost:8000/needed_reviews/${userId}/`,
+        `https://fjreview.work/needed_reviews/${userId}/`,
         {
           method: "GET",
           headers: {
