@@ -12,10 +12,7 @@ const Footer = () => {
             </a>
             . All rights reserved.
           </p>
-          <p className="text-sm">
-            <div className="text-gold text-sm">Privacy Policy |</div>
-            <div className="text-sm text-gold"> Terms of Service</div>
-          </p>
+          <p className="text-gold text-sm">Privacy Policy | Terms of Service</p>
         </div>
       </footer>
     </div>

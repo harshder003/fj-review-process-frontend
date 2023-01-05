@@ -61,42 +61,11 @@ function NeededReviewForms() {
 
   if (isLoading) {
     window.scrollTo(0, 0);
-    // gold color cards with no info slightly transparent to show loading
-    // they will have a pulsing animation
     return (
       <div className="">
         <div className="flex justify-center mt-14">
           <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-gold"></div>
         </div>
-
-        {/* <ul className="flex flex-col items-stretch justify-center mt-7 mx-5 md:mx-44 lg:mx-72">
-          <li>
-            <div className="bg-gold bg-opacity-50 rounded-lg p-4 mb-4">
-              <div className="animate-pulse flex space-x-4">
-                <div className="flex-1 space-y-4 py-1">
-                  <div className="h-4 bg-gold bg-opacity-50 rounded w-3/4"></div>
-                  <div className="space-y-2">
-                    <div className="h-4 bg-gold bg-opacity-50 rounded"></div>
-                    <div className="h-4 bg-gold bg-opacity-50 rounded w-5/6"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div className="bg-gold bg-opacity-50 rounded-lg p-4">
-              <div className="animate-pulse flex space-x-4">
-                <div className="flex-1 space-y-4 py-1">
-                  <div className="h-4 bg-gold bg-opacity-50 rounded w-3/4"></div>
-                  <div className="space-y-2">
-                    <div className="h-4 bg-gold bg-opacity-50 rounded"></div>
-                    <div className="h-4 bg-gold bg-opacity-50 rounded w-5/6"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </li>
-        </ul> */}
       </div>
     );
   }
