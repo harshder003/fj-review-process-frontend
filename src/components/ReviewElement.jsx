@@ -45,7 +45,7 @@ const ReviewElement = (props) => {
           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline resize-y border-gold bg-navy"
           placeholder="Enter your answer here"
           rows="2"
-          required
+          required={mandatory}
         />
       </div>
     );
@@ -63,7 +63,6 @@ const ReviewElement = (props) => {
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline resize-y border-gold bg-navy"
                 placeholder="Enter your answer here"
                 rows="2"
-                required
               />
             </li>
           ))}
@@ -89,7 +88,7 @@ const ReviewElement = (props) => {
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline resize-y border-gold bg-navy"
             placeholder="Enter your answer here"
             rows="2"
-            required
+            required={mandatory}
           />
         </div>
         <div>{addShortAnswer()}</div>
@@ -118,7 +117,7 @@ const ReviewElement = (props) => {
     );
   }
 
-  const commentName = "comment: " + text;
+  const commentName = "Comment: " + text;
   const HMLName = "HML: " + text;
 
   if (type === "HMLComment Answer") {
@@ -139,7 +138,7 @@ const ReviewElement = (props) => {
             name={HMLName}
             value="H"
             className="form-radio text-gold focus:border-gold focus:outline-none focus:shadow-outline border-gold bg-navy"
-            required
+            required={mandatory}
           />
           <label className=" ml-2 mr-4">High</label>
           <input
@@ -148,7 +147,7 @@ const ReviewElement = (props) => {
             name={HMLName}
             value="M"
             className="form-radio text-gold focus:border-gold focus:outline-none focus:shadow-outline border-gold bg-navy"
-            required
+            required={mandatory}
             defaultChecked
           />
           <label className=" ml-2 mr-4">Medium</label>
@@ -158,7 +157,7 @@ const ReviewElement = (props) => {
             name={HMLName}
             value="L"
             className="form-radio text-gold focus:border-gold focus:outline-none focus:shadow-outline border-gold bg-navy"
-            required
+            required={mandatory}
           />
           <label className="ml-2 mr-4">Low</label>
           <input

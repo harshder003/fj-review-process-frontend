@@ -168,7 +168,7 @@ const ReviewForm = () => {
         </h2>
       );
     }
-    if (neededReview["external"]) {
+    if (neededReview["type"] === "external") {
       return (
         <h2 className="text-xl text-center text-white">
           Please complete the following review of {neededReview.employee_name}'s
@@ -180,7 +180,7 @@ const ReviewForm = () => {
   }
 
   const getPartnerAnonymousMessage = (
-    <h3 className="text-sm text-center text-white">
+    <h3 className="text-xl text-center text-red-500 mb-2 mt-1 font-bold">
       Please note that partner reviews are anonymous.
     </h3>
   );
@@ -270,8 +270,8 @@ const ReviewForm = () => {
             <span> - {neededReview.project_name}</span>
           ) : null}
         </h1>
-        {neededReview["type"] === "partner" ? getPartnerAnonymousMessage : null}
         {getReviewTitle()}
+        {neededReview["type"] === "partner" ? getPartnerAnonymousMessage : null}
         <p className="text-center text-red-500 font-bold text-sm mt-2">
           * represents a required field
         </p>
