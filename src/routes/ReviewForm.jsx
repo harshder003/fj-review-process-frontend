@@ -96,6 +96,7 @@ const ReviewForm = () => {
 
     if (neededReview["project_name"]) {
       review["project_name"] = neededReview["project_name"];
+      review["reviewer_project_role"] = neededReview["reviewer_project_role"];
       review["project_id"] = neededReview["project_id"];
     }
     const json = JSON.stringify(review);
