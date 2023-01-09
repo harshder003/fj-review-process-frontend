@@ -2,17 +2,24 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <div>
-      <footer className="bg-navy text-white text-center py-2 mt-4">
-        <div className="container mx-auto">
+    // on bottom of page tailwind css even if page is short footer will be at bottom
+    <div className="bottom-0 w-full">
+      <footer className="bg-navy text-white text-center py-6 mt-6 border-t-2 border-gray-200 shadow-md border-zinc-600">
+        <div className="container mx-auto px-4">
           <p className="text-sm">
-            &copy; 2022{" "}
+            Copyright &copy; 2022{" "}
             <a href="https://fischerjordan.com/" className="text-gold">
-              FischerJordan
+              FischerJordan.{" "}
             </a>
-            . All rights reserved.
+            All rights reserved.{" "}
           </p>
-          <p className="text-gold text-sm">Privacy Policy | Terms of Service</p>
+          <a
+            href="https://fischerjordan.com/privacypolicy/"
+            className="text-gold text-sm mt-2
+          "
+          >
+            Privacy Policy
+          </a>
         </div>
       </footer>
     </div>

@@ -16,16 +16,16 @@ const router = createBrowserRouter([
     path: "/",
     element: <Root />,
     errorElement: <ErrorPage />,
-    children: [
-      {
-        path: "pr-reviews/:userId",
-        element: <NeededReviewForms />,
-      },
-      {
-        path: "pr-review/:reviewId",
-        element: <ReviewForm />,
-      },
-    ],
+  },
+  {
+    path: "/pr-reviews/:userId",
+    element: <NeededReviewForms />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/pr-review/:reviewId",
+    element: <ReviewForm />,
+    errorElement: <ErrorPage />,
   },
 ]);
 

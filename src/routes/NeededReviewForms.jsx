@@ -2,6 +2,8 @@ import React from "react";
 import "../input.css";
 import NeededFormCard from "../components/NeededFormCard";
 import { useParams } from "react-router-dom";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 function NeededReviewForms() {
   // array of needed forms
@@ -62,7 +64,7 @@ function NeededReviewForms() {
   if (isLoading) {
     window.scrollTo(0, 0);
     return (
-      <div className="">
+      <div className="bg-navy min-h-screen flex flex-col justify-between">
         <div className="flex justify-center mt-14">
           <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-gold"></div>
         </div>
@@ -70,23 +72,23 @@ function NeededReviewForms() {
     );
   }
   return (
-    <>
-      {/* profile card */}
-      <div className="flex justify-end mx-4 mt-4">
-        <button className="text-xl font-bold text-center border-2 text-gold rounded-full px-4 py-2 border-navy hover:border-gold">
-          {neededForms[0]?.reviewer_name}
-        </button>
+    <div className="bg-navy min-h-screen flex flex-col justify-between">
+      <div>
+        <Header profileName={neededForms[0]?.reviewer_name} />
+        <main id="detail" className="">
+          <div className="mx-5 md:mx-16 lg:mx-72">
+            <h1 className="text-gold text-3xl font-bold text-center mt-12">
+              Performance Review Dashboard
+            </h1>
+            {getInstructions()}
+            <ul className="flex flex-col items-stretch justify-center mt-7 ">
+              {formCards}
+            </ul>
+          </div>
+        </main>
       </div>
-      <div className="mx-5 md:mx-16 lg:mx-72">
-        <h1 className="text-gold text-3xl font-bold text-center mt-12">
-          Performance Review Dashboard
-        </h1>
-        {getInstructions()}
-        <ul className="flex flex-col items-stretch justify-center mt-7 ">
-          {formCards}
-        </ul>
-      </div>
-    </>
+      <Footer />
+    </div>
   );
 }
 

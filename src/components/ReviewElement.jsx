@@ -4,6 +4,7 @@ const ReviewElement = (props) => {
   const type = props.type;
   const text = props.text;
   const mandatory = props.mandatory;
+  const index = props.index;
 
   const [numAddShortAnswer, setNumAddShortAnswer] = React.useState(0);
 
@@ -42,7 +43,7 @@ const ReviewElement = (props) => {
         </label>
         <textarea
           name={text}
-          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline resize-y border-gold bg-navy"
+          className="shadow appearance-none border rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline resize-y border-gold bg-navy focus:shadow-xl"
           placeholder="Enter your answer here"
           rows="2"
           required={mandatory}
@@ -59,8 +60,8 @@ const ReviewElement = (props) => {
           .map((_, i) => (
             <li className="flex flex-row mb-4 text-white" key={i}>
               <textarea
-                name={text + i}
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline resize-y border-gold bg-navy"
+                name={text + (i + 1)}
+                className="shadow appearance-none border rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline resize-y border-gold bg-navy focus:shadow-xl"
                 placeholder="Enter your answer here"
                 rows="2"
               />
@@ -84,8 +85,8 @@ const ReviewElement = (props) => {
         </label>
         <div className="flex flex-row mb-4 mt-2">
           <textarea
-            name={text + numAddShortAnswer}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline resize-y border-gold bg-navy"
+            name={text + 0}
+            className="shadow appearance-none border rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline resize-y border-gold bg-navy focus:shadow-xl"
             placeholder="Enter your answer here"
             rows="2"
             required={mandatory}
@@ -96,22 +97,33 @@ const ReviewElement = (props) => {
         <div className="flex flex-row justify-end mb-2 mt-2 items-center text-gray">
           <button
             type="button"
-            className="bg-gold text-navy font-bold py-2 px-4 rounded hover:bg-gold-dark hover:text-navy-dark hover:shadow-lg hover:border-gold-dark mx-1"
-            onClick={() => setNumAddShortAnswer(numAddShortAnswer + 1)}
+            className="bg-gold text-navy font-bold w-10 h-10 rounded-2xl text-xl hover:bg-gold-light hover:text-navy-dark hover:shadow-xl hover:border-gold-dark mx-1"
+            // onclick add a new short answer input and focus on it
+            onClick={() => {
+              setNumAddShortAnswer(numAddShortAnswer + 1);
+              // wait for the new short answer input to be added to the DOM
+              setTimeout(() => {
+                // focus on the new short answer input
+                document
+                  .getElementsByName(text + (numAddShortAnswer + 1))[0]
+                  .focus();
+              }, 0);
+            }}
           >
             +
           </button>
-          <button
-            type="button"
-            className="bg-gold text-navy font-bold py-2 px-4 rounded hover:bg-gold-dark hover:text-navy-dark hover:shadow-lg hover:border-gold-dark mx-1"
-            onClick={
-              numAddShortAnswer > 0
-                ? () => setNumAddShortAnswer(numAddShortAnswer - 1)
-                : null
-            }
-          >
-            -
-          </button>
+          {/* if there is more than one short answer input, show the minus button */}
+          {numAddShortAnswer > 0 ? (
+            <button
+              type="button"
+              className="bg-gold text-navy font-bold w-10 h-10 rounded-2xl text-xl hover:bg-gold-light hover:text-navy-dark hover:shadow-xl hover:border-gold-dark mx-1"
+              onClick={() => {
+                setNumAddShortAnswer(numAddShortAnswer - 1);
+              }}
+            >
+              -
+            </button>
+          ) : null}
         </div>
       </div>
     );
@@ -131,49 +143,63 @@ const ReviewElement = (props) => {
         as well as an optional comment box,
         The input value will be stored as a string in the database example "H: This is a comment" 
         */}
-        <div className="flex flex-row mb-4 mt-1 items-center text-gray">
-          <input
-            type="radio"
-            id="H"
-            name={HMLName}
-            value="H"
-            className="form-radio text-gold focus:border-gold focus:outline-none focus:shadow-outline border-gold bg-navy"
-            required={mandatory}
-          />
-          <label className=" ml-2 mr-4">High</label>
-          <input
-            type="radio"
-            id="M"
-            name={HMLName}
-            value="M"
-            className="form-radio text-gold focus:border-gold focus:outline-none focus:shadow-outline border-gold bg-navy"
-            required={mandatory}
-            defaultChecked
-          />
-          <label className=" ml-2 mr-4">Medium</label>
-          <input
-            type="radio"
-            id="L"
-            name={HMLName}
-            value="L"
-            className="form-radio text-gold focus:border-gold focus:outline-none focus:shadow-outline border-gold bg-navy"
-            required={mandatory}
-          />
-          <label className="ml-2 mr-4">Low</label>
-          <input
-            type="radio"
-            id="Don't Know"
-            name={HMLName}
-            value="Don't Know"
-            className="form-radio text-gold focus:border-gold focus:outline-none focus:shadow-outline border-gold bg-navy"
-            required
-          />
-          <label className="ml-2 mr-4">Don't Know</label>
+        <div className="flex flex-col mb-4 mt-1 items-center text-gray md:flex-row">
+          <div className="flex flex-row items-center mb-2 md:mb-0">
+            <input
+              type="radio"
+              id={"H" + index}
+              name={HMLName}
+              value="H"
+              className="form-radio text-gold focus:border-gold focus:outline-none focus:shadow-outline border-gold bg-navy"
+              required={mandatory}
+            />
+            <label className=" ml-2 mr-4" for={"H" + index}>
+              High
+            </label>
+            <input
+              type="radio"
+              id={"M" + index}
+              name={HMLName}
+              value="M"
+              className="form-radio text-gold focus:border-gold focus:outline-none focus:shadow-outline border-gold bg-navy"
+              required={mandatory}
+              defaultChecked
+            />
+            <label className=" ml-2 mr-4" for={"M" + index}>
+              Medium
+            </label>
+            <input
+              type="radio"
+              id={"L" + index}
+              name={HMLName}
+              value="L"
+              className="form-radio text-gold focus:border-gold focus:outline-none focus:shadow-outline border-gold bg-navy"
+              required={mandatory}
+            />
+            <label className="ml-2 mr-4" for={"L" + index}>
+              Low
+            </label>
+            <input
+              type="radio"
+              id={"Don't Know" + index}
+              name={HMLName}
+              value="Don't Know"
+              className="form-radio text-gold focus:border-gold focus:outline-none focus:shadow-outline border-gold bg-navy"
+              required
+            />
+            {/* make Don't know fit on one line */}
+            <label
+              className="ml-2 mr-4 whitespace-no-wrap w-24"
+              for={"Don't Know" + index}
+            >
+              Don't Know
+            </label>
+          </div>
           {/* if no comment included by user don't put in form data */}
           {/* scales vertically to show all text when out of space*/}
           <textarea
             name={commentName}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline resize-y border-gold bg-navy text-white"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline resize-y border-gold bg-navy text-white focus:shadow-xl"
             placeholder="Optional Comment"
             rows="1"
           />

@@ -1,7 +1,8 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import ReviewElement from "../components/ReviewElement";
-import { Link } from "react-router-dom";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 const ReviewForm = () => {
   const { reviewId } = useParams();
@@ -66,6 +67,7 @@ const ReviewForm = () => {
         type={field.Type}
         text={field.Text}
         mandatory={field.Mandatory === 1}
+        index={index}
       />
     </li>
   ));
@@ -122,10 +124,8 @@ const ReviewForm = () => {
 
   if (loadingFields || loadingReview) {
     window.scrollTo(0, 0);
-    // gold color cards with no info slightly transparent to show loading
-    // they will have a pulsing animation
     return (
-      <div className="">
+      <div className="bg-navy min-h-screen flex flex-col justify-between">
         <div className="flex justify-center mt-14">
           <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-gold"></div>
         </div>
@@ -181,8 +181,8 @@ const ReviewForm = () => {
   }
 
   const getPartnerAnonymousMessage = (
-    <h3 className="text-xl text-center text-red-500 mb-2 mt-1 font-bold">
-      Please note that partner reviews are anonymous.
+    <h3 className="text-xl text-center text-white mb-2 mt-1 font-bold">
+      PLEASE NOTE THAT ALL PARTNER REVIEWS ARE ANONYMOUS.
     </h3>
   );
 
@@ -195,17 +195,19 @@ const ReviewForm = () => {
   if (isSubmitted) {
     window.scrollTo(0, 0);
     return (
-      <div className="flex flex-col items-center justify-center mt-14">
-        <h1 className="text-xl text-center text-gold font-bold w-72 mb-7">
-          Thank you for completing the review!
-        </h1>
-        <button
-          className="bg-gold hover:bg-gold-light text-white font-bold py-2 px-4 rounded hover:shadow-lg hover:-translate-y-1 duration-300 ease-in-out"
-          type="button"
-          onClick={returnToDashboard}
-        >
-          Back to Dashboard
-        </button>
+      <div className="bg-navy min-h-screen flex flex-col justify-between">
+        <div className="flex flex-col justify-center items-center">
+          <h1 className="text-xl text-center text-gold font-bold w-72 mb-7 mt-14">
+            Thank you for completing the review!
+          </h1>
+          <button
+            className="bg-gold hover:bg-gold-light text-white font-bold py-2 px-4 rounded hover:shadow-lg hover:-translate-y-1 duration-300 ease-in-out"
+            type="button"
+            onClick={returnToDashboard}
+          >
+            Back to Dashboard
+          </button>
+        </div>
       </div>
     );
   }
@@ -213,13 +215,13 @@ const ReviewForm = () => {
   function animatedSubmitButton() {
     if (isSubmitting) {
       return (
-        <div className="flex justify-center my-7">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gold"></div>
+        <div className="flex justify-center my-10">
+          <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-gold"></div>
         </div>
       );
     } else {
       return (
-        <div className="flex justify-center my-7">
+        <div className="flex justify-center my-10">
           <button
             className="bg-gold hover:bg-gold-light text-white font-bold py-2 px-4 rounded hover:shadow-lg hover:-translate-y-1 duration-300 ease-in-out"
             type="submit"
@@ -249,30 +251,38 @@ const ReviewForm = () => {
   }
 
   return (
-    <div className="bg-navy min-h-screen">
-      <div className="flex justify-between mx-4 mt-4">
-        <Link to={dashboardLink}>
+    <div className="bg-navy min-h-screen flex flex-col justify-between">
+      <Header
+        profileName={neededReview.reviewer_name}
+        dashboardLink={
+          // we also want to give a window.confirm to make sure they want to leave
           <button
             className="bg-gold hover:bg-gold-light text-white font-bold py-2 px-4 rounded hover:shadow-lg hover:-translate-y-1 duration-300 ease-in-out"
-            type="submit"
+            type="button"
+            onClick={() => {
+              if (
+                window.confirm(
+                  "Are you sure you want to leave? Inputs will not be saved."
+                )
+              ) {
+                window.history.back();
+              }
+            }}
           >
-            Back to Dashboard
+            Dashboard
           </button>
-        </Link>
-        <button className="text-xl font-bold text-center border-2 text-gold rounded-full px-4 py-2 border-navy hover:border-gold">
-          {neededReview.reviewer_name}
-        </button>
-      </div>
+        }
+      />
 
-      <div className="mx-5 md:mx-40 lg:mx-60">
-        <h1 className="text-3xl font-bold text-center mt-12 mb-2 text-gold">
+      <main className="mx-5 md:mx-40 lg:mx-60 mt-12">
+        {neededReview["type"] === "partner" ? getPartnerAnonymousMessage : null}
+        <h1 className="text-3xl font-bold text-center mb-2 text-gold">
           {neededReview.title} - {neededReview.employee_name}
           {neededReview.project_name ? (
             <span> - {neededReview.project_name}</span>
           ) : null}
         </h1>
         {getReviewTitle()}
-        {neededReview["type"] === "partner" ? getPartnerAnonymousMessage : null}
         <p className="text-center text-red-500 font-bold text-sm mt-2">
           * represents a required field
         </p>
@@ -283,7 +293,9 @@ const ReviewForm = () => {
           {animatedSubmitButton()}
           {errorAlert()}
         </form>
-      </div>
+      </main>
+
+      <Footer />
     </div>
   );
 };
