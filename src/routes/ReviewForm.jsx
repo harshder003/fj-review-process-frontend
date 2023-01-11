@@ -13,6 +13,7 @@ const ReviewForm = () => {
   const [isSubmitting, setIsSubmitting] = React.useState(false);
   const [isSubmitted, setIsSubmitted] = React.useState(false);
   const [isError, setIsError] = React.useState(false);
+  const [neededReviewError, setNeededReviewError] = React.useState(false);
 
   React.useEffect(() => {
     async function getReviewFields() {
@@ -58,6 +59,30 @@ const ReviewForm = () => {
       console.log(data);
     });
   }, [reviewId]);
+
+  // if needed review comes back like this {"success": "false", "message": "XXXXXXXXXXXXXXXXXX"}
+  // then return an error message and a link to the dashboard
+  // but first check if it has those fields in the needed review before trying to access them
+  if (neededReview.hasOwnProperty("success")) {
+    if (neededReview["success"] === "false") {
+      return (
+        <div className="bg-navy min-h-screen flex flex-col justify-between">
+          <div className="flex flex-col justify-center items-center">
+            <h1 className="text-xl text-center text-red-500 font-bold w-72 mb-7 mt-14">
+              {neededReview["message"]}
+            </h1>
+            <button
+              className="bg-gold hover:bg-gold-light text-white font-bold py-2 px-4 rounded hover:shadow-lg hover:-translate-y-1 duration-300 ease-in-out"
+              type="button"
+              onClick={returnToDashboard}
+            >
+              Back to Dashboard
+            </button>
+          </div>
+        </div>
+      );
+    }
+  }
 
   const dashboardLink = `/pr-reviews/${neededReview.reviewer_id}`;
 
