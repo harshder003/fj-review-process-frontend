@@ -71,13 +71,6 @@ const ReviewForm = () => {
             <h1 className="text-xl text-center text-red-500 font-bold w-72 mb-7 mt-14">
               {neededReview["message"]}
             </h1>
-            <button
-              className="bg-gold hover:bg-gold-light text-white font-bold py-2 px-4 rounded hover:shadow-lg hover:-translate-y-1 duration-300 ease-in-out"
-              type="button"
-              onClick={returnToDashboard}
-            >
-              Back to Dashboard
-            </button>
           </div>
         </div>
       );
