@@ -19,6 +19,13 @@ const NeededFormCard = (props) => {
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
     return diffDays;
   }
+  const dueDateText =
+    daysUntilDue(props.form.due_date) >= 0
+      ? "Due in " +
+        daysUntilDue(props.form.due_date) +
+        " day(s) on " +
+        formatDueDate(props.form.due_date)
+      : "Past Due";
 
   return (
     <>
@@ -30,8 +37,7 @@ const NeededFormCard = (props) => {
           {/* due date text in red */}
           <div className="mb-1">
             <p className="block text-red-500 text-sm font-bold mb-2">
-              Due in {daysUntilDue(props.form.due_date)} day(s) on{" "}
-              {formatDueDate(props.form.due_date)}
+              {dueDateText}
             </p>
           </div>
           <div className="mb-4">
