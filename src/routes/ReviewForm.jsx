@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import ReviewElement from "../components/ReviewElement";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
@@ -14,6 +14,8 @@ const ReviewForm = () => {
   const [isSubmitted, setIsSubmitted] = React.useState(false);
   const [isError, setIsError] = React.useState(false);
   const [neededReviewError, setNeededReviewError] = React.useState(false);
+
+  const navigate = useNavigate();
 
   React.useEffect(() => {
     async function getReviewFields() {
@@ -283,7 +285,7 @@ const ReviewForm = () => {
                   "Are you sure you want to leave? Inputs will not be saved."
                 )
               ) {
-                window.history.back();
+                navigate(dashboardLink);
               }
             }}
           >
