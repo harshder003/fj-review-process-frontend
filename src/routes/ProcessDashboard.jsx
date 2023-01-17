@@ -135,7 +135,8 @@ const ProcessDashboard = () => {
                 {Object.keys(processStats).map((key, index) => {
                   const total =
                     processStats[key].incomplete + processStats[key].complete;
-                  const percentComplete = processStats[key].complete / total;
+                  const percentComplete =
+                    (processStats[key].complete / total) * 100;
                   return (
                     <li
                       className="grid grid-cols-5 gap-3  my-4 text-center"
@@ -159,8 +160,7 @@ const ProcessDashboard = () => {
                       <div className="text-white text-lg text-center">
                         {
                           // round to 2 decimal places
-                          Math.round((percentComplete + Number.EPSILON) * 100) /
-                            100
+                          Math.round(percentComplete * 100) / 100
                         }
                         %
                       </div>
