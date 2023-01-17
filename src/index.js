@@ -9,6 +9,7 @@ import NeededReviewForms from './routes/NeededReviewForms';
 import Root from './routes/Root';
 import reportWebVitals from './reportWebVitals';
 import ReviewForm from './routes/ReviewForm';
+import ProcessDashboard from './routes/ProcessDashboard';
 
 
 const router = createBrowserRouter([
@@ -27,6 +28,11 @@ const router = createBrowserRouter([
     element: <ReviewForm />,
     errorElement: <ErrorPage />,
   },
+  {
+    path: "/admin",
+    element: <ProcessDashboard />,
+    errorElement: <ErrorPage />,
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
