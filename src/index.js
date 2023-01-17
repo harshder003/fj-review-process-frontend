@@ -29,7 +29,7 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
-    path: "/admin",
+    path: "/process-stats/",
     element: <ProcessDashboard />,
     errorElement: <ErrorPage />,
   }
