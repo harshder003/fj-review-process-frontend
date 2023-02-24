@@ -10,6 +10,7 @@ import Root from './routes/Root';
 import reportWebVitals from './reportWebVitals';
 import ReviewForm from './routes/ReviewForm';
 import ProcessDashboard from './routes/ProcessDashboard';
+import EndDate from './routes/EndDate';
 
 
 const router = createBrowserRouter([
@@ -26,6 +27,11 @@ const router = createBrowserRouter([
   {
     path: "/pr-review/:reviewId",
     element: <ReviewForm />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/post_end_date/:_id/:projectId",
+    element: <EndDate />,
     errorElement: <ErrorPage />,
   },
   {
