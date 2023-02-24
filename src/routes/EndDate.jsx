@@ -20,7 +20,7 @@ const EndDate = () => {
     async function getEndDate() {
       setLoadingFields(true);
       const response = await fetch(
-        `https://fjreview.work/needed_reviews/fields/${reviewId}/`,
+        `https://fjreview.work/get_end_date/${_id}/${projectId}/`,
         // `http://127.0.0.1:8000/get_end_date/${_id}/${projectId}/`,
         {
           method: "GET",
