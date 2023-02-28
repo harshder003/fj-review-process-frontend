@@ -25,7 +25,6 @@ const EndDate = () => {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*",
           },
           
         }
@@ -77,7 +76,6 @@ const EndDate = () => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
         
       },
       accept: "application/json",
