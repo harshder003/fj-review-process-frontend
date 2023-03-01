@@ -26,6 +26,7 @@ const EndDate = () => {
           headers: {
             "Content-Type": "application/json",
           },
+          accept: "application/json",
           
         }
       );
