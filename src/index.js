@@ -11,7 +11,7 @@ import reportWebVitals from './reportWebVitals';
 import ReviewForm from './routes/ReviewForm';
 import ProcessDashboard from './routes/ProcessDashboard';
 import EndDate from './routes/EndDate';
-
+import ConfirmDate from './routes/ConfirmDate';
 
 const router = createBrowserRouter([
   {
@@ -32,6 +32,11 @@ const router = createBrowserRouter([
   {
     path: "/post_end_date/:_id/:projectId",
     element: <EndDate />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/confirm_end_date/:_id/:projectId",
+    element: <ConfirmDate />,
     errorElement: <ErrorPage />,
   },
   {
