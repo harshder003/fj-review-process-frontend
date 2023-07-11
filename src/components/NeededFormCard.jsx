@@ -29,7 +29,7 @@ const NeededFormCard = (props) => {
 
   return (
     <>
-      <Link to={`/pr-review/${props.form._id}`}>
+      <Link to={`/pr-review/${props.form.id}`}>
         <button className="bg-navy border-2 border-gold shadow-md rounded-3xl px-8 pt-6 pb-8 mb-2 flex flex-col my-2 hover:shadow-2xl transition duration-500 ease-in-out transform hover:-translate-y-1 w-full hover:bg-navy-light">
           <h1 className="block text-gold text-2xl font-bold mb-1 text-left">
             {props.form.title}

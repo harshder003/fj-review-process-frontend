@@ -6,7 +6,7 @@ import Footer from "../components/Footer";
 
 
 const ConfirmDate = () => {
-  const { _id, projectId } = useParams();
+  const { id, projectId } = useParams();
   const [prevDetails, setPrevDetails] = React.useState({});
   const [loadingFields, setLoadingFields] = React.useState(false);
   const [loadingReview, setLoadingReview] = React.useState(false);
@@ -20,8 +20,7 @@ const ConfirmDate = () => {
     async function getConfirmDate() {
       setLoadingFields(true);
       const response = await fetch(
-         `https://fjreview.work/confirming_end_date/${_id}/${projectId}/`,
-//         `http://127.0.0.1:8000/confirming_end_date/${_id}/${projectId}/`,
+        `https://fjreview.work/confirming_end_date/${id}/${projectId}`,
         {
           method: "GET",
           headers: {
@@ -41,7 +40,7 @@ const ConfirmDate = () => {
       console.log(data);
     });
 
-  }, [_id, projectId]);
+  }, [id, projectId]);
 
   // if needed review comes back like this {"success": "false", "message": "XXXXXXXXXXXXXXXXXX"}
   // then return an error message

@@ -30,12 +30,12 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
-    path: "/post_end_date/:_id/:projectId",
+    path: "/post_end_date/:id/:projectId",
     element: <EndDate />,
     errorElement: <ErrorPage />,
   },
   {
-    path: "/confirm_end_date/:_id/:projectId",
+    path: "/confirm_end_date/:id/:projectId",
     element: <ConfirmDate />,
     errorElement: <ErrorPage />,
   },

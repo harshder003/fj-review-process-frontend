@@ -6,7 +6,7 @@ import Footer from "../components/Footer";
 
 
 const EndDate = () => {
-  const { _id, projectId } = useParams();
+  const { id, projectId } = useParams();
   const [prevDetails, setPrevDetails] = React.useState({});
   const [loadingFields, setLoadingFields] = React.useState(false);
   const [loadingReview, setLoadingReview] = React.useState(false);
@@ -20,7 +20,7 @@ const EndDate = () => {
     async function getEndDate() {
       setLoadingFields(true);
       const response = await fetch(
-        `https://fjreview.work/get_end_date/${_id}/${projectId}/`,
+        `https://fjreview.work/get_end_date/${id}/${projectId}`,
         {
           method: "GET",
           headers: {
@@ -40,7 +40,7 @@ const EndDate = () => {
       console.log(data);
     });
 
-  }, [_id, projectId]);
+  }, [id, projectId]);
 
   // if needed review comes back like this {"success": "false", "message": "XXXXXXXXXXXXXXXXXX"}
   // then return an error message
@@ -65,7 +65,7 @@ const EndDate = () => {
     setIsSubmitting(true);
 
     const end_date = {
-      employee_id: _id,
+      employee_id: id,
       project_id: projectId,
       end_date: document.getElementById("end").value
     }
@@ -73,7 +73,7 @@ const EndDate = () => {
 
     console.log(json);
     
-    const response = await fetch(`https://fjreview.work/posting_end_date/`, {
+    const response = await fetch(`https://fjreview.work/posting_end_date`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
