@@ -20,7 +20,7 @@ const EndDate = () => {
     async function getEndDate() {
       setLoadingFields(true);
       const response = await fetch(
-        `https://fjreview.work/get_end_date/${id}/${projectId}`,
+        `https://api.fjreview.work/get_end_date/${id}/${projectId}`,
         {
           method: "GET",
           headers: {
@@ -73,7 +73,7 @@ const EndDate = () => {
 
     console.log(json);
     
-    const response = await fetch(`https://fjreview.work/posting_end_date`, {
+    const response = await fetch(`https://api.fjreview.work/posting_end_date`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

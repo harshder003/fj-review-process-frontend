@@ -17,7 +17,7 @@ function NeededReviewForms() {
     async function getNeededForms() {
       setIsLoading(true);
       const response = await fetch(
-        `https://fjreview.work/needed_reviews/${userId}`,
+        `https://api.fjreview.work/needed_reviews/${userId}`,
         {
           method: "GET",
           headers: {
