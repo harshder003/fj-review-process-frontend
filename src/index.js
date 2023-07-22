@@ -12,6 +12,7 @@ import ReviewForm from './routes/ReviewForm';
 import ProcessDashboard from './routes/ProcessDashboard';
 import EndDate from './routes/EndDate';
 import ConfirmDate from './routes/ConfirmDate';
+import CompletedReviews from './routes/CompletedReviews';
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,11 @@ const router = createBrowserRouter([
   {
     path: "/confirm_end_date/:id/:projectId",
     element: <ConfirmDate />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/completed_reviews/:userId",
+    element: <CompletedReviews />,
     errorElement: <ErrorPage />,
   },
   {
