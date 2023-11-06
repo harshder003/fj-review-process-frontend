@@ -20,6 +20,7 @@ const ConfirmDate = () => {
       setLoadingFields(true);
       const response = await fetch(
         `https://api.fjreview.work/confirming_end_date/${id}/${projectId}`,
+        // `http://localhost:3000/confirming_end_date/${id}/${projectId}`,
         {
           method: "GET",
           headers: {

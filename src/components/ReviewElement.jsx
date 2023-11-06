@@ -4,12 +4,22 @@ const ReviewElement = (props) => {
   const type = props.type;
   const text = props.text;
   const mandatory = props.mandatory;
+  const needs_definition = props.needs_definition;
+  const definition = props.definition;
   const index = props.index;
 
   const [numAddShortAnswer, setNumAddShortAnswer] = React.useState(0);
 
   const mandatoryStar = mandatory ? (
-    <span className="text-red-500"> *</span>
+    <span className="text-red-500"> * </span>
+  ) : (
+    <span className="text-white"></span>
+  );
+  
+  const needsDefinitionButton = needs_definition ? (
+    <button className="form-radio leading-tight text-white border-white bg-navy" title={definition}>i</button>
+    // shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline resize-y border-gold focus:shadow-xl
+    // <img src="i.png" height="15" width="15" alt="i" title={definition}/>
   ) : (
     <span className="text-white"></span>
   );
@@ -138,6 +148,7 @@ const ReviewElement = (props) => {
         <label>
           <span className="text-white mb-2">{text}</span>
           {mandatoryStar}
+          {needsDefinitionButton}
         </label>
         {/* Horizontal option either L M or H
         as well as an optional comment box,
