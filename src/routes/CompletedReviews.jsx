@@ -21,6 +21,7 @@ function CompletedReviews() {
       sixMonthsAgo.setMonth(sixMonthsAgo.getMonth() - 6);
       const response = await fetch(
         `https://api.fjreview.work/needed_reviews/completed/${userId}?min_date=${sixMonthsAgo.toISOString().slice(0, 10)}`,
+        // `http://localhost:3000/needed_reviews/completed/${userId}?min_date=${sixMonthsAgo.toISOString().slice(0, 10)}`,
         {
           method: "GET",
           headers: {
