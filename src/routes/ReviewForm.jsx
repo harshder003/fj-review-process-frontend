@@ -133,7 +133,7 @@ const ReviewForm = () => {
     const json = JSON.stringify(review);
 
     console.log(json);
-    const response = await fetch(`https://api.fjreview.work/reviews`, {
+    const response = await fetch(`https://arsdemo.fjreview.work/reviews`, {
     // const response = await fetch(`http://localhost:3000/reviews`, {  
       method: "POST",
       headers: {
