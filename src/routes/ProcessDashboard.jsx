@@ -11,7 +11,7 @@ const ProcessDashboard = () => {
     async function getProcessStats() {
       setIsLoading(true);
       try {
-        const response = await fetch("https://api.fjreview.work/process_stats", {
+        const response = await fetch("https://arsdemo.fjreview.work/process_stats", {
         // const response = await fetch("http://localhost:3000/process_stats", {
           method: "GET",
           headers: {
