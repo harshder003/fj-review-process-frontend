@@ -21,7 +21,7 @@ const ReviewForm = () => {
     async function getReviewFields() {
       setLoadingFields(true);
       const response = await fetch(
-        `https://api.fjreview.work/needed_reviews/fields/${reviewId}`,
+        `https://arsdemo.fjreview.work/needed_reviews/fields/${reviewId}`,
         // `http://localhost:3000/needed_reviews/fields/${reviewId}`,
         {
           method: "GET",
