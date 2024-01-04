@@ -17,7 +17,7 @@ const ReviewElement = (props) => {
   );
   
   const needsDefinitionButton = needs_definition ? (
-    <button className="form-radio leading-tight text-white border-white bg-navy" title={definition}>i</button>
+    <div className="form-radio leading-tight text-white border-white bg-navy" title={definition}>i</div>
     // shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline resize-y border-gold focus:shadow-xl
     // <img src="i.png" height="15" width="15" alt="i" title={definition}/>
   ) : (
