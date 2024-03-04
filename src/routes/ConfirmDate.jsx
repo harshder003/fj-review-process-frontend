@@ -19,7 +19,7 @@ const ConfirmDate = () => {
     async function getConfirmDate() {
       setLoadingFields(true);
       const response = await fetch(
-        `https://arsdemo.fjreview.work/confirming_end_date/${id}/${projectId}`,
+        `https://arsprod.fjreview.work/confirming_end_date/${id}/${projectId}`,
         // `http://localhost:3000/confirming_end_date/${id}/${projectId}`,
         {
           method: "GET",
