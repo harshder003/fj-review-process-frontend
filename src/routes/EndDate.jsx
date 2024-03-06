@@ -20,7 +20,8 @@ const EndDate = () => {
     async function getEndDate() {
       setLoadingFields(true);
       const response = await fetch(
-        `https://arsprod.fjreview.work/get_end_date/${id}/${projectId}`,
+        // `https://arsprod.fjreview.work/get_end_date/${id}/${projectId}`,
+        `https://ef15-122-171-236-173.ngrok-free.app/get_end_date/${id}/${projectId}`,
         // `http://localhost:3000/get_end_date/${id}/${projectId}`,
         {
           method: "GET",
