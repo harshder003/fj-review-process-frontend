@@ -26,6 +26,7 @@ const ConfirmDate = () => {
           headers: {
             "Content-Type": "application/json",
             "Access-Control-Allow-Origin": "*",
+             'ngrok-skip-browser-warning': 'true',
           },
           
         }
