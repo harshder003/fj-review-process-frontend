@@ -45,8 +45,9 @@ const ReviewForm = () => {
     async function getNeededForm() {
       setLoadingReview(true);
       const response = await fetch(
-        `https://arsdemo.fjreview.work/needed_reviews/review/${reviewId}`,
+        // `https://arsdemo.fjreview.work/needed_reviews/review/${reviewId}`,
         // `http://localhost:3000/needed_reviews/review/${reviewId}`,
+        `https://bfe7-122-171-236-173.ngrok-free.app/needed_reviews/review/${reviewId}`,
         {
           method: "GET",
           headers: {
