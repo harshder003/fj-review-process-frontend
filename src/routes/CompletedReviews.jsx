@@ -22,7 +22,7 @@ function CompletedReviews() {
       const response = await fetch(
         // `https://arsprod.fjreview.work/needed_reviews/completed/${userId}?min_date=${sixMonthsAgo.toISOString().slice(0, 10)}`,
         // `http://localhost:3000/needed_reviews/completed/${userId}?min_date=${sixMonthsAgo.toISOString().slice(0, 10)}`,
-        `https://bfe7-122-171-236-173.ngrok-free.app/needed_reviews/completed/${userId}?min_date=${sixMonthsAgo.toISOString().slice(0, 10)}`,
+        `https://ef15-122-171-236-173.ngrok-free.app/needed_reviews/completed/${userId}?min_date=${sixMonthsAgo.toISOString().slice(0, 10)}`,
         {
           method: "GET",
           headers: {
