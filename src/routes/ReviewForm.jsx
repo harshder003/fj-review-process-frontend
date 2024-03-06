@@ -23,7 +23,7 @@ const ReviewForm = () => {
       const response = await fetch(
         // `https://arsprod.fjreview.work/needed_reviews/fields/${reviewId}`,
         // `http://localhost:3000/needed_reviews/fields/${reviewId}`,
-        `https://bfe7-122-171-236-173.ngrok-free.app/needed_reviews/fields/${reviewId}`,
+        `https://ef15-122-171-236-173.ngrok-free.app/needed_reviews/fields/${reviewId}`,
         {
           method: "GET",
           headers: {
@@ -48,7 +48,7 @@ const ReviewForm = () => {
       const response = await fetch(
         // `https://arsdemo.fjreview.work/needed_reviews/review/${reviewId}`,
         // `http://localhost:3000/needed_reviews/review/${reviewId}`,
-        `https://bfe7-122-171-236-173.ngrok-free.app/needed_reviews/review/${reviewId}`,
+        `https://ef15-122-171-236-173.ngrok-free.app/needed_reviews/review/${reviewId}`,
         {
           method: "GET",
           headers: {
@@ -138,7 +138,7 @@ const ReviewForm = () => {
 
     console.log(json);
     // const response = await fetch(`https://arsprod.fjreview.work/reviews`, {
-      const response = await fetch(`https://bfe7-122-171-236-173.ngrok-free.app/reviews`, {
+      const response = await fetch(`https://ef15-122-171-236-173.ngrok-free.app/reviews`, {
     // const response = await fetch(`http://localhost:3000/reviews`, {  
       method: "POST",
       headers: {
