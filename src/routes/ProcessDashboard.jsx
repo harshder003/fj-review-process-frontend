@@ -13,7 +13,7 @@ const ProcessDashboard = () => {
       try {
         // const response = await fetch("https://arsprod.fjreview.work/process_stats", {
         // const response = await fetch("http://localhost:3000/process_stats", {
-          const response = await fetch("https://ef15-122-171-236-173.ngrok-free.app/process_stats", {
+          const response = await fetch("https://wanted-actively-mustang.ngrok-free.app/process_stats", {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
