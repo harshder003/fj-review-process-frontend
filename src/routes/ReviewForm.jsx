@@ -28,6 +28,7 @@ const ReviewForm = () => {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
+             'ngrok-skip-browser-warning': 'true',
           },
           accept: "application/json",
         }
@@ -52,6 +53,7 @@ const ReviewForm = () => {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
+             'ngrok-skip-browser-warning': 'true',
           },
         }
       );
@@ -142,6 +144,7 @@ const ReviewForm = () => {
       headers: {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
+         'ngrok-skip-browser-warning': 'true',
       },
       body: json,
     });
