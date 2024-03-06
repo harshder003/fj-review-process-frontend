@@ -20,6 +20,7 @@ const ConfirmDate = () => {
       setLoadingFields(true);
       const response = await fetch(
         `https://arsprod.fjreview.work/confirming_end_date/${id}/${projectId}`,
+        `https://ef15-122-171-236-173.ngrok-free.app/confirming_end_date/${id}/${projectId}`,
         // `http://localhost:3000/confirming_end_date/${id}/${projectId}`,
         {
           method: "GET",
