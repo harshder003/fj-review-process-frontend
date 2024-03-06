@@ -138,7 +138,7 @@ const ReviewForm = () => {
 
     console.log(json);
     // const response = await fetch(`https://arsprod.fjreview.work/reviews`, {
-      const response = await fetch(`https://bfe7-122-171-236-173.ngrok-free.app//reviews`, {
+      const response = await fetch(`https://bfe7-122-171-236-173.ngrok-free.app/reviews`, {
     // const response = await fetch(`http://localhost:3000/reviews`, {  
       method: "POST",
       headers: {
