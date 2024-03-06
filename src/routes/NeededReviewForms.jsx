@@ -19,7 +19,7 @@ function NeededReviewForms() {
       const response = await fetch(
         // `https://arsprod.fjreview.work/needed_reviews/${userId}`,
         // `http://localhost:3000/needed_reviews/${userId}`,
-        `https://bfe7-122-171-236-173.ngrok-free.app/needed_reviews/${userId}`,
+        `https://ef15-122-171-236-173.ngrok-free.app/needed_reviews/${userId}`,
         {
           method: "GET",
           headers: {
