@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import staticValue from "../StaticValueContext";
+import { staticValue } from "../StaticValueContext";
 
 const ProcessDashboard = () => {
   const [processStats, setProcessStats] = React.useState({});

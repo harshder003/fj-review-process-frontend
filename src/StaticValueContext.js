@@ -17,8 +17,8 @@
 //   return useContext(StaticValueContext);
 // };
 // StaticValue.js
-const staticValue = 'https://moral-terrapin-adequate.ngrok-free.app/';
+export const staticValue = 'https://moral-terrapin-adequate.ngrok-free.app/';
 
-export const getStaticValue = () => {
-  return staticValue;
-};
+// export const getStaticValue = () => {
+//   return staticValue;
+// };

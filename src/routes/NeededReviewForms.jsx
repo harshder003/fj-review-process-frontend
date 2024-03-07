@@ -4,7 +4,7 @@ import NeededFormCard from "../components/NeededFormCard";
 import { Link, useParams } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import staticValue from "../StaticValueContext";
+import {staticValue} from "../StaticValueContext";
 
 function NeededReviewForms() {
   // array of needed forms
