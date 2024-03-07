@@ -2,7 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-
+import staticValue from "../StaticValueContext";
 
 
 const EndDate = () => {
@@ -20,7 +20,7 @@ const EndDate = () => {
     async function getEndDate() {
       setLoadingFields(true);
       const response = await fetch(
-        `https://api.fjreview.work/get_end_date/${id}/${projectId}`,
+        `${staticValue}get_end_date/${id}/${projectId}`,
         {
           method: "GET",
           headers: {
@@ -73,7 +73,7 @@ const EndDate = () => {
 
     console.log(json);
     
-    const response = await fetch(`https://api.fjreview.work/posting_end_date`, {
+    const response = await fetch(`${staticValue}posting_end_date`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

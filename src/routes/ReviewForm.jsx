@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import ReviewElement from "../components/ReviewElement";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import staticValue from "../StaticValueContext";
 
 const ReviewForm = () => {
   const { reviewId } = useParams();
@@ -21,7 +22,7 @@ const ReviewForm = () => {
     async function getReviewFields() {
       setLoadingFields(true);
       const response = await fetch(
-        `https://api.fjreview.work/needed_reviews/fields/${reviewId}`,
+        `${staticValue}needed_reviews/fields/${reviewId}`,
         {
           method: "GET",
           headers: {
@@ -43,7 +44,7 @@ const ReviewForm = () => {
     async function getNeededForm() {
       setLoadingReview(true);
       const response = await fetch(
-        `https://api.fjreview.work/needed_reviews/review/${reviewId}`,
+        `${staticValue}needed_reviews/review/${reviewId}`,
         {
           method: "GET",
           headers: {
@@ -123,17 +124,19 @@ const ReviewForm = () => {
     }
     const json = JSON.stringify(review);
 
-    console.log(json);
-    const response = await fetch(`https://api.fjreview.work/reviews`, {
+    // console.log(json);
+    const response = await fetch(`${staticValue}reviews`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Headers": "Authorization, Content-Type",
+        "Access-Control-Allow-Methods": "POST"
       },
       body: json,
     });
     const responseData = await response.json();
-    console.log(responseData);
+    // console.log(responseData);
     if (response.ok) {
       setIsSubmitted(true);
     } else {

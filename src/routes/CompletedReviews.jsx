@@ -4,6 +4,7 @@ import CompletedReviewCard from "../components/CompletedReviewCard";
 import { useNavigate, useParams } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import staticValue from "../StaticValueContext";
 
 function CompletedReviews() {
   // array of needed forms
@@ -20,7 +21,7 @@ function CompletedReviews() {
       let sixMonthsAgo = new Date();
       sixMonthsAgo.setMonth(sixMonthsAgo.getMonth() - 6);
       const response = await fetch(
-        `https://api.fjreview.work/needed_reviews/completed/${userId}?min_date=${sixMonthsAgo.toISOString().slice(0, 10)}`,
+        `${staticValue}needed_reviews/completed/${userId}?min_date=${sixMonthsAgo.toISOString().slice(0, 10)}`,
         {
           method: "GET",
           headers: {

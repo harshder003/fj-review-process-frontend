@@ -4,6 +4,7 @@ import NeededFormCard from "../components/NeededFormCard";
 import { Link, useParams } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import staticValue from "../StaticValueContext";
 
 function NeededReviewForms() {
   // array of needed forms
@@ -17,7 +18,7 @@ function NeededReviewForms() {
     async function getNeededForms() {
       setIsLoading(true);
       const response = await fetch(
-        `https://api.fjreview.work/needed_reviews/${userId}`,
+        `${staticValue}needed_reviews/${userId}`,
         {
           method: "GET",
           headers: {

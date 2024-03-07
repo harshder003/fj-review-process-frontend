@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import Footer from "../components/Footer";
-
+import staticValue from "../StaticValueContext";
 
 
 const ConfirmDate = () => {
@@ -19,7 +19,7 @@ const ConfirmDate = () => {
     async function getConfirmDate() {
       setLoadingFields(true);
       const response = await fetch(
-        `https://api.fjreview.work/confirming_end_date/${id}/${projectId}`,
+        `${staticValue}confirming_end_date/${id}/${projectId}`,
         {
           method: "GET",
           headers: {

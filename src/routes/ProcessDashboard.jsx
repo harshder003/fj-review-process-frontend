@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import staticValue from "../StaticValueContext";
 
 const ProcessDashboard = () => {
   const [processStats, setProcessStats] = React.useState({});
@@ -11,7 +12,7 @@ const ProcessDashboard = () => {
     async function getProcessStats() {
       setIsLoading(true);
       try {
-        const response = await fetch("https://api.fjreview.work/process_stats", {
+        const response = await fetch(`${staticValue}process_stats`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -61,7 +62,7 @@ const ProcessDashboard = () => {
   //   },
   // };
 
-  if (error !== null) {
+  if (error != null) {
     window.scrollTo(0, 0);
     return (
       <div className="bg-navy min-h-screen flex flex-col justify-between">
