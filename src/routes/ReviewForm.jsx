@@ -25,7 +25,6 @@ const ReviewForm = () => {
         `${staticValue}needed_reviews/fields/${reviewId}`,
         // `https://arsprod.fjreview.work/needed_reviews/fields/${reviewId}`,
         // `http://localhost:3000/needed_reviews/fields/${reviewId}`,
-        // `${staticValue}needed_reviews/fields/${reviewId}`,
         {
           method: "GET",
           headers: {
@@ -51,7 +50,6 @@ const ReviewForm = () => {
         `${staticValue}needed_reviews/review/${reviewId}`,
         // `https://arsdemo.fjreview.work/needed_reviews/review/${reviewId}`,
         // `http://localhost:3000/needed_reviews/review/${reviewId}`,
-        `${staticValue}needed_reviews/review/${reviewId}`,
         {
           method: "GET",
           headers: {
@@ -140,7 +138,6 @@ const ReviewForm = () => {
     const json = JSON.stringify(review);
 
     // console.log(json);
-    // const response = await fetch(`${staticValue}reviews`, {
     console.log(json);
     // const response = await fetch(`https://arsprod.fjreview.work/reviews`, {
       const response = await fetch(`${staticValue}reviews`, {

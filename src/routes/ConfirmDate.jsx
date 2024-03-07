@@ -21,7 +21,7 @@ const ConfirmDate = () => {
       const response = await fetch(
         `${staticValue}confirming_end_date/${id}/${projectId}`,
         // `https://arsprod.fjreview.work/confirming_end_date/${id}/${projectId}`,
-        `${staticValue}confirming_end_date/${id}/${projectId}`,
+        // `${staticValue}confirming_end_date/${id}/${projectId}`,
         // `http://localhost:3000/confirming_end_date/${id}/${projectId}`,
         {
           method: "GET",
