@@ -25,7 +25,7 @@ const ReviewForm = () => {
         `${staticValue}needed_reviews/fields/${reviewId}`,
         // `https://arsprod.fjreview.work/needed_reviews/fields/${reviewId}`,
         // `http://localhost:3000/needed_reviews/fields/${reviewId}`,
-        `${staticValue}needed_reviews/fields/${reviewId}`,
+        // `${staticValue}needed_reviews/fields/${reviewId}`,
         {
           method: "GET",
           headers: {
