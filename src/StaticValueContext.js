@@ -17,7 +17,7 @@
 //   return useContext(StaticValueContext);
 // };
 // StaticValue.js
-const staticValue = 'http://localhost:3000/';
+const staticValue = 'https://wanted-actively-mustang.ngrok-free.app/';
 
 export const getStaticValue = () => {
   return staticValue;
