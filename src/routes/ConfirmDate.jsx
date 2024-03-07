@@ -20,11 +20,15 @@ const ConfirmDate = () => {
       setLoadingFields(true);
       const response = await fetch(
         `${staticValue}confirming_end_date/${id}/${projectId}`,
+        // `https://arsprod.fjreview.work/confirming_end_date/${id}/${projectId}`,
+        `https://wanted-actively-mustang.ngrok-free.app/confirming_end_date/${id}/${projectId}`,
+        // `http://localhost:3000/confirming_end_date/${id}/${projectId}`,
         {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
             "Access-Control-Allow-Origin": "*",
+             'ngrok-skip-browser-warning': 'true',
           },
           
         }

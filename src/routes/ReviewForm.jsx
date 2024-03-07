@@ -23,10 +23,14 @@ const ReviewForm = () => {
       setLoadingFields(true);
       const response = await fetch(
         `${staticValue}needed_reviews/fields/${reviewId}`,
+        // `https://arsprod.fjreview.work/needed_reviews/fields/${reviewId}`,
+        // `http://localhost:3000/needed_reviews/fields/${reviewId}`,
+        `https://wanted-actively-mustang.ngrok-free.app/needed_reviews/fields/${reviewId}`,
         {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
+             'ngrok-skip-browser-warning': 'true',
           },
           accept: "application/json",
         }
@@ -45,10 +49,14 @@ const ReviewForm = () => {
       setLoadingReview(true);
       const response = await fetch(
         `${staticValue}needed_reviews/review/${reviewId}`,
+        // `https://arsdemo.fjreview.work/needed_reviews/review/${reviewId}`,
+        // `http://localhost:3000/needed_reviews/review/${reviewId}`,
+        `https://wanted-actively-mustang.ngrok-free.app/needed_reviews/review/${reviewId}`,
         {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
+             'ngrok-skip-browser-warning': 'true',
           },
         }
       );
@@ -88,6 +96,8 @@ const ReviewForm = () => {
         type={field.Type}
         text={field.Text}
         mandatory={field.Mandatory === 1}
+        needs_definition={field.NeedsDefinition === 1}
+        definition={field.Definition}
         index={index}
       />
     </li>
@@ -119,19 +129,27 @@ const ReviewForm = () => {
 
     if (neededReview["project_name"]) {
       review["project_name"] = neededReview["project_name"];
-      review["reviewer_project_role"] = neededReview["reviewer_project_role"];
+    }
+    if (neededReview["project_id"]) {
       review["project_id"] = neededReview["project_id"];
     }
+    if (neededReview["reviewer_project_role"]) {
+      review["reviewer_project_role"] = neededReview["reviewer_project_role"];
+    }
+
     const json = JSON.stringify(review);
 
     // console.log(json);
     const response = await fetch(`${staticValue}reviews`, {
+    console.log(json);
+    // const response = await fetch(`https://arsprod.fjreview.work/reviews`, {
+      const response = await fetch(`https://wanted-actively-mustang.ngrok-free.app/reviews`, {
+    // const response = await fetch(`http://localhost:3000/reviews`, {  
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Headers": "Authorization, Content-Type",
-        "Access-Control-Allow-Methods": "POST"
+         'ngrok-skip-browser-warning': 'true',
       },
       body: json,
     });
@@ -161,7 +179,43 @@ const ReviewForm = () => {
       return (
         <h2 className="text-xl text-center text-white">
           Please complete the following review of {neededReview.employee_name}
-          's performance on the {neededReview.project_name} project over the
+          's performance on the project(s) {neededReview.project_name} over the
+          past 6 months.
+        </h2>
+      );
+    }
+    if (neededReview["type"] === "ba") {
+      return (
+        <h2 className="text-xl text-center text-white">
+          Please complete the following review of {neededReview.employee_name}
+          's performance on the project(s) {neededReview.project_name} over the
+          past 6 months.
+        </h2>
+      );
+    }
+    if (neededReview["type"] === "da") {
+      return (
+        <h2 className="text-xl text-center text-white">
+          Please complete the following review of {neededReview.employee_name}
+          's performance on the project(s) {neededReview.project_name} over the
+          past 6 months.
+        </h2>
+      );
+    }
+    if (neededReview["type"] === "tech") {
+      return (
+        <h2 className="text-xl text-center text-white">
+          Please complete the following review of {neededReview.employee_name}
+          's performance on the project(s) {neededReview.project_name} over the
+          past 6 months.
+        </h2>
+      );
+    }
+    if (neededReview["type"] === "hr") {
+      return (
+        <h2 className="text-xl text-center text-white">
+          Please complete the following review of {neededReview.employee_name}
+          's performance over the
           past 6 months.
         </h2>
       );
@@ -178,7 +232,16 @@ const ReviewForm = () => {
       return (
         <h2 className="text-xl text-center text-white">
           Please complete the following review of {neededReview.employee_name}'s
-          performance on the {neededReview.project_name} project over the past 6
+          performance on the project(s) {neededReview.project_name} over the past 6
+          months.
+        </h2>
+      );
+    }
+    if (neededReview["type"] === "mg partner") {
+      return (
+        <h2 className="text-xl text-center text-white">
+          Please complete the following review of {neededReview.employee_name}'s
+          performance on the project(s) {neededReview.project_name} over the past 6
           months.
         </h2>
       );
@@ -187,7 +250,7 @@ const ReviewForm = () => {
       return (
         <h2 className="text-xl text-center text-white">
           Please complete the following review of {neededReview.employee_name}'s
-          performance on the {neededReview.project_name} project over the past 6
+          performance on the project(s) {neededReview.project_name} over the past 6
           months.
         </h2>
       );
@@ -301,7 +364,7 @@ const ReviewForm = () => {
         {neededReview["type"] === "partner" ? getPartnerAnonymousMessage : null}
         <h1 className="text-3xl font-bold text-center mb-2 text-gold">
           {neededReview.title} - {neededReview.employee_name}
-          {neededReview.project_name ? (
+          {neededReview.project_id ? (
             <span> - {neededReview.project_name}</span>
           ) : null}
         </h1>
