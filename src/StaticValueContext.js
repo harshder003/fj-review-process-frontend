@@ -17,7 +17,7 @@
 //   return useContext(StaticValueContext);
 // };
 // StaticValue.js
-export const staticValue = 'https://wanted-actively-mustang.ngrok-free.app/';
+export const staticValue = 'https://moral-terrapin-adequate.ngrok-free.app/';
 
 // export const getStaticValue = () => {
 //   return staticValue;
